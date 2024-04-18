@@ -1,0 +1,5 @@
+CREATE TABLE squad_25.Responsavel (
+    id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(300),
+    CONSTRAINT FK_Usuario FOREIGN KEY (id) REFERENCES Usuario(id)
+);
