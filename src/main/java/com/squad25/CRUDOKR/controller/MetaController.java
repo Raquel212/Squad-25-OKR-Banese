@@ -36,7 +36,7 @@ public class MetaController {
 
     @PutMapping("/{id}")
     public Meta updateMeta(@PathVariable Long id, @RequestBody Meta meta) {
-        meta.setId(id);
+        meta.getId(id);
         return metaService.save(meta);
     }
 
