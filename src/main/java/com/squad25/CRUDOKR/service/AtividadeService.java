@@ -32,7 +32,7 @@ public class AtividadeService {
     }
 
     public Atividade atualizarAtividade(Long id, Atividade atividadeAtualizada) {
-        atividadeAtualizada.setId(id);
+        atividadeAtualizada.getId(id);
         return atividadeRepository.save(atividadeAtualizada);
     }
 }

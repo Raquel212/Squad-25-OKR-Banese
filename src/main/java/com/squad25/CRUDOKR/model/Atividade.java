@@ -47,11 +47,7 @@ public class Atividade {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
-	public void setId(Long id2) {
-		// TODO Auto-generated method stub
-		
+	public Long getId(Long id) {
+		return id;
 	}
-
-    // Getters and Setters
 }
