@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.squad25.CRUDOKR.service.AtividadeService;
 import com.squad25.CRUDOKR.model.Atividade;
+import com.squad25.CRUDOKR.service.AtividadeService;
 
 @RestController
 @RequestMapping("/atividades")
@@ -26,8 +26,8 @@ public class AtividadeController {
     private AtividadeService atividadeService;
 
     @GetMapping
-    public List<Atividade> listarAtividades() {
-        return atividadeService.listarAtividades();
+    public ResponseEntity<List<Atividade>> listarAtividades() {
+        return ResponseEntity.ok(atividadeService.listarAtividades());
     }
 
     @PostMapping
@@ -39,7 +39,7 @@ public class AtividadeController {
     @GetMapping("/{id}")
     public ResponseEntity<Atividade> buscarAtividade(@PathVariable Long id) {
         Optional<Atividade> atividade = atividadeService.buscarAtividade(id);
-        return atividade.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        return ResponseEntity.ok(atividade.orElse(null));
     }
 
     @PutMapping("/{id}")

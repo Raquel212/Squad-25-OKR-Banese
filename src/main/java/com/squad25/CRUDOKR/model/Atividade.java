@@ -1,6 +1,7 @@
 package com.squad25.CRUDOKR.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,6 +25,9 @@ public class Atividade {
     @Temporal(TemporalType.DATE)
     @Column(name = "dataCadastro")
     private Date dataCadastro;
+    
+    @Column(name = "dataConclusao")
+    private LocalDate dataConclusao;
 
     @Column(name = "status")
     private String status;
@@ -47,7 +51,28 @@ public class Atividade {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Long getId(Long id) {
+	public Long getid() {
 		return id;
+	}
+	public Long setId(Long id) {
+		return id;
+	}
+	public Long getIdKeyResult() {
+		return idKeyResult;
+	}
+	public void setIdKeyResult(Long idKeyResult) {
+		this.idKeyResult = idKeyResult;
+	}
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+	public LocalDate getDataConclusao() {
+		return dataConclusao;
+	}
+	public void setDataConclusao(LocalDate dataConclusao) {
+		this.dataConclusao = dataConclusao;
 	}
 }

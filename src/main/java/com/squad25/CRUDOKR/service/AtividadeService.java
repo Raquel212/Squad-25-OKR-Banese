@@ -2,37 +2,17 @@ package com.squad25.CRUDOKR.service;
 
 import java.util.List;
 import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.squad25.CRUDOKR.repository.AtividadeRepository;
 import com.squad25.CRUDOKR.model.Atividade;
 
-@Service
-public class AtividadeService {
+public interface AtividadeService {
+	
+	List<Atividade> listarAtividades();
 
-    @Autowired
-    private AtividadeRepository atividadeRepository;
+    Atividade criarAtividade(Atividade atividade);
+    
+    Optional<Atividade> buscarAtividade(Long id);
 
-    public List<Atividade> listarAtividades() {
-        return atividadeRepository.findAll();
-    }
+    void deletarAtividade(Long id);
 
-    public Atividade criarAtividade(Atividade atividade) {
-        return atividadeRepository.save(atividade);
-    }
-
-    public Optional<Atividade> buscarAtividade(Long id) {
-        return atividadeRepository.findById(id);
-    }
-
-    public void deletarAtividade(Long id) {
-        atividadeRepository.deleteById(id);
-    }
-
-    public Atividade atualizarAtividade(Long id, Atividade atividadeAtualizada) {
-        atividadeAtualizada.getId(id);
-        return atividadeRepository.save(atividadeAtualizada);
-    }
+    Atividade atualizarAtividade(Long id, Atividade atividadeAtualizada);
 }
