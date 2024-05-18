@@ -1,32 +1,20 @@
 package com.squad25.CRUDOKR.service;
 
-import com.squad25.CRUDOKR.model.Meta;
-import com.squad25.CRUDOKR.repository.MetaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class MetaService {
+import com.squad25.CRUDOKR.model.Meta;
 
-    @Autowired
-    private MetaRepository metaRepository;
+public interface MetaService {
+	
+	 List<Meta> listarMetas();
+	    
+	 Meta criarMeta(Meta meta);
 
-    public List<Meta> findAll() {
-        return metaRepository.findAll();
-    }
+	 Optional<Meta> buscarMeta(Long id);
 
-    public Optional<Meta> findById(Long id) {
-        return metaRepository.findById(id);
-    }
+	 void deletarMeta(Long id);
+	 
+	 Meta atualizarMeta(Long id, Meta metaAtualizada);
 
-    public Meta save(Meta meta) {
-        return metaRepository.save(meta);
-    }
-
-    public void deleteById(Long id) {
-        metaRepository.deleteById(id);
-    }
 }

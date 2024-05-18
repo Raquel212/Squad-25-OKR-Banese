@@ -5,22 +5,34 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
 public class Meta {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+    
     @Column(name = "idKeyResult")
     private Long idKeyResult;
+    
+    @Temporal(TemporalType.DATE)
     @Column(name = "dataCadastro")
     private Date dataCadastro;
+    
     @Column(name = "status")
     private String status;
+    
     @Column(name = "dataConclusao")
-    private Date dataConclusao;
+    private LocalDate dataConclusao;
+    
+    @Temporal(TemporalType.DATE)
     @Column(name = "descricao")
     private String descricao;
     
@@ -42,10 +54,10 @@ public class Meta {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Date getDataConclusao() {
+	public LocalDate getDataConclusao() {
 		return dataConclusao;
 	}
-	public void setDataConclusao(Date dataConclusao) {
+	public void setDataConclusao(LocalDate dataConclusao) {
 		this.dataConclusao = dataConclusao;
 	}
 	public String getDescricao() {
@@ -54,6 +66,10 @@ public class Meta {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Long getId(Long id) { return id;}
-	
+	public Long getid() {
+		return id;
+	}
+	public Long setId(Long id) {
+		return id;
+	}
 }

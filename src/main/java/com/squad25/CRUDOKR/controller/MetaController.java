@@ -6,10 +6,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.squad25.CRUDOKR.model.Meta;
 import com.squad25.CRUDOKR.service.MetaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/metas")
@@ -19,29 +22,31 @@ public class MetaController {
     private MetaService metaService;
 
     @GetMapping
-    public List<Meta> getAllMetas() {
-        return metaService.findAll();
+    public ResponseEntity<List<Meta>> getAllMetas() {
+        return ResponseEntity.ok(metaService.listarMetas());
     }
 
     @GetMapping("/{id}")
-    public Meta getMetaById(@PathVariable Long id) {
-        return metaService.findById(id)
-                .orElseThrow(() -> new RuntimeException("Meta não encontrada"));
+    public ResponseEntity<Meta> getMetaById(@PathVariable Long id) {
+        Optional<Meta> meta = metaService.buscarMeta(id);
+        return ResponseEntity.ok(meta.orElse(null));
     }
 
     @PostMapping
-    public Meta createMeta(@RequestBody Meta meta) {
-        return metaService.save(meta);
+    public ResponseEntity<Meta> createMeta(@RequestBody Meta meta) {
+    	Meta metaCriada = metaService.criarMeta(meta);
+        return ResponseEntity.status(HttpStatus.CREATED).body(metaCriada);
     }
 
     @PutMapping("/{id}")
-    public Meta updateMeta(@PathVariable Long id, @RequestBody Meta meta) {
-        meta.getId(id);
-        return metaService.save(meta);
+    public ResponseEntity<Meta> updateMeta(@PathVariable Long id, @RequestBody Meta metaAtualizada) {
+        Meta meta = metaService.atualizarMeta(id, metaAtualizada);
+        return ResponseEntity.ok(meta);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteMeta(@PathVariable Long id) {
-        metaService.deleteById(id);
+    public ResponseEntity<Void> deleteMeta(@PathVariable Long id) {
+    	metaService.deletarMeta(id);
+        return ResponseEntity.noContent().build();
     }
 }
