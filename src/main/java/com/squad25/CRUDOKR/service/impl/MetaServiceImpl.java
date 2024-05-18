@@ -21,8 +21,10 @@ public class MetaServiceImpl implements MetaService {
     }
     
     public Meta criarMeta(Meta meta) {
-    	return metaRepository.save(meta);
-    }
+    	  meta.setId(meta.getId());
+    	  return metaRepository.save(meta);
+    	}
+
 
     public Optional<Meta> buscarMeta(Long id) {
         return metaRepository.findById(id);
@@ -33,20 +35,16 @@ public class MetaServiceImpl implements MetaService {
     }
     
     public Meta atualizarMeta(Long id, Meta metaAtualizada) {
-    	Optional<Meta> metaExistente = metaRepository.findById(id);
-    	if (metaExistente.isPresent()) {
-    		Meta meta = metaExistente.get();
-    		meta.setDescricao(metaAtualizada.getDescricao());
-    		meta.setStatus(metaAtualizada.getStatus());
-    		meta.setDataCadastro(metaAtualizada.getDataCadastro());
-    		meta.setDataConclusao(metaAtualizada.getDataConclusao());
-    		meta.setIdKeyResult(metaAtualizada.getIdKeyResult());
-    		meta.setId(metaAtualizada.getid());
-    		
-    		metaRepository.save(meta);
-    		return meta;
-    	} else {
-    		return null;
-    	}
-    }
+    	 return metaRepository.findById(id)
+    	 	.map(metaExistente -> {
+    		metaExistente.setDescricao(metaAtualizada.getDescricao());
+    		metaExistente.setStatus(metaAtualizada.getStatus());
+    		metaExistente.setDataCadastro(metaAtualizada.getDataCadastro());
+    		metaExistente.setDataConclusao(metaAtualizada.getDataConclusao());
+    		metaExistente.setIdKeyResult(metaAtualizada.getIdKeyResult());
+    		metaExistente.setId(metaAtualizada.getId());
+    		return metaRepository.save(metaExistente);
+    	})
+    	.orElse(null);
+}
 }
