@@ -4,7 +4,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.squad25.CRUDOKR.model.Meta;
-import com.squad25.CRUDOKR.service.MetaService;
+import com.squad25.CRUDOKR.service.impl.MetaServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,33 +20,42 @@ import java.util.Optional;
 public class MetaController {
 
     @Autowired
-    private MetaService metaService;
+    private MetaServiceImpl metaService;
 
     @GetMapping
-    public ResponseEntity<List<Meta>> getAllMetas() {
-        return ResponseEntity.ok(metaService.listarMetas());
+    public ResponseEntity<List<Meta>> listarMeta() {
+        List<Meta> meta = metaService.listarMetas();
+        if (meta.isEmpty()) {
+        	return ResponseEntity.noContent().build();
+        } else {
+        	return ResponseEntity.ok(meta);
+        }
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Meta> getMetaById(@PathVariable Long id) {
+    public ResponseEntity<Meta> buscarMeta(@PathVariable Long id) {
         Optional<Meta> meta = metaService.buscarMeta(id);
-        return ResponseEntity.ok(meta.orElse(null));
+        return meta.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Meta> createMeta(@RequestBody Meta meta) {
+    public ResponseEntity<Meta> criarMeta(@RequestBody Meta meta) {
     	Meta metaCriada = metaService.criarMeta(meta);
         return ResponseEntity.status(HttpStatus.CREATED).body(metaCriada);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Meta> updateMeta(@PathVariable Long id, @RequestBody Meta metaAtualizada) {
+    public ResponseEntity<Meta> atualizarMeta(@PathVariable Long id, @RequestBody Meta metaAtualizada) {
         Meta meta = metaService.atualizarMeta(id, metaAtualizada);
-        return ResponseEntity.ok(meta);
+        if (meta != null) {
+        	return ResponseEntity.ok(meta);
+        } else {
+        	return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMeta(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarMeta(@PathVariable Long id) {
     	metaService.deletarMeta(id);
         return ResponseEntity.noContent().build();
     }
