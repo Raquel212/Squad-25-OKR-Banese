@@ -2,19 +2,18 @@ package com.squad25.CRUDOKR.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-@Table(name = "KeyResult")
 public class KeyResult {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "idResponsavel")
@@ -22,18 +21,20 @@ public class KeyResult {
 
     @Column(name = "tipo")
     private String tipo;
-
+    
     @Column(name = "descricao", length = 300)
     private String descricao;
 
     @Column(name = "idObjetivo")
     private Long idObjetivo;
-
+    
+    @Temporal(TemporalType.DATE)
     @Column(name = "dataCadastro")
     private Date dataCadastro;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "dataConclusao")
-    private Date dataConclusao;
+    private LocalDate dataConclusao;
 
     @Column(name = "status")
     private String status;
@@ -86,11 +87,11 @@ public class KeyResult {
         this.dataCadastro = dataCadastro;
     }
 
-    public Date getDataConclusao() {
+    public LocalDate getDataConclusao() {
         return dataConclusao;
     }
 
-    public void setDataConclusao(Date dataConclusao) {
+    public void setDataConclusao(LocalDate dataConclusao) {
         this.dataConclusao = dataConclusao;
     }
 
