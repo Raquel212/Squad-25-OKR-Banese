@@ -29,7 +29,6 @@ public class Atividade {
     @Column(name = "status")
     private String status;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "descricao")
     private String descricao;
 
@@ -51,8 +50,8 @@ public class Atividade {
 	public Long getId() {
 		return id;
 	}
-	public Long setId(Long id) {
-		return id;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public Long getIdKeyResult() {
 		return idKeyResult;
