@@ -21,8 +21,10 @@ public class AtividadeServiceImpl implements AtividadeService {
     }
 
     public Atividade criarAtividade(Atividade atividade) {
-        return atividadeRepository.save(atividade);
-    }
+    	  atividade.setId(atividade.getId());
+    	  return atividadeRepository.save(atividade);
+    	}
+
 
     public Optional<Atividade> buscarAtividade(Long id) {
         return atividadeRepository.findById(id);
@@ -33,20 +35,17 @@ public class AtividadeServiceImpl implements AtividadeService {
     }
 
     public Atividade atualizarAtividade(Long id, Atividade atividadeAtualizada) {
-        Optional<Atividade> atividadeExistente = atividadeRepository.findById(id);
-        if (atividadeExistente.isPresent()) {
-            Atividade atividade = atividadeExistente.get();
-            atividade.setDescricao(atividadeAtualizada.getDescricao());
-            atividade.setStatus(atividadeAtualizada.getStatus());
-            atividade.setDataCadastro(atividadeAtualizada.getDataCadastro());
-            atividade.setDataConclusao(atividadeAtualizada.getDataConclusao());
-            atividade.setIdKeyResult(atividadeAtualizada.getIdKeyResult());
-            atividade.setId(atividadeAtualizada.getid());
+        return atividadeRepository.findById(id)
+        		.map(atividadeExistente -> {
+            atividadeExistente.setDescricao(atividadeAtualizada.getDescricao());
+            atividadeExistente.setStatus(atividadeAtualizada.getStatus());
+            atividadeExistente.setDataCadastro(atividadeAtualizada.getDataCadastro());
+            atividadeExistente.setDataConclusao(atividadeAtualizada.getDataConclusao());
+            atividadeExistente.setIdKeyResult(atividadeAtualizada.getIdKeyResult());
+            atividadeExistente.setId(atividadeAtualizada.getId());
+            return atividadeRepository.save(atividadeExistente);
             
-            atividadeRepository.save(atividade);
-            return atividade;
-        } else {
-            return null;
-        }
+        })
+        		.orElse(null);
     }
 }
