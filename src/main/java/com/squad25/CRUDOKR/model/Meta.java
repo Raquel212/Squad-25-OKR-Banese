@@ -2,8 +2,6 @@ package com.squad25.CRUDOKR.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -15,7 +13,7 @@ import java.util.Date;
 public class Meta {
 	
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     
     @Column(name = "idKeyResult")
@@ -68,7 +66,7 @@ public class Meta {
 	public Long getId() {
 		return id;
 	}
-	public Long setId(Long id) {
-		return id;
+	public void setId(Long id) {
+		this.id = id;
 	}
 }
