@@ -1,8 +1,6 @@
 package com.squad25.CRUDOKR.service;
 
 import java.util.List;
-import java.util.Optional;
-
 import com.squad25.CRUDOKR.model.Usuario;
 
 public interface UsuarioService {
@@ -10,4 +8,5 @@ public interface UsuarioService {
     Usuario criar(Usuario usuario);
     Usuario atualizar(Usuario usuario);
     void remover(Integer id);
+	Usuario buscarPorId(Integer id);
 }

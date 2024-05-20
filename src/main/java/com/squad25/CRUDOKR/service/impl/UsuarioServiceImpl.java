@@ -4,7 +4,6 @@ import com.squad25.CRUDOKR.model.Usuario;
 import com.squad25.CRUDOKR.service.UsuarioService;
 import com.squad25.CRUDOKR.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -53,5 +52,16 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
 
     }
+
+    @Override
+    public Usuario buscarPorId(Integer id) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+        if (usuarioOptional.isPresent()) {
+            return usuarioOptional.get();
+        } else {
+            return null;
+        }
+    }
+
 
 }
