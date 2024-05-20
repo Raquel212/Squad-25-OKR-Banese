@@ -4,24 +4,14 @@ import com.squad25.CRUDOKR.model.Objetivo;
 
 import java.util.List;
 
-public class ObjetivoService {
-    public Objetivo createObjetivo(Objetivo objetivo) {
-        return objetivo;
-    }
+public interface ObjetivoService {
+    public Objetivo createObjetivo(Objetivo objetivo);
 
-    public Objetivo getObjetivo(Long id) {
-        return null;
-    }
+    public Objetivo getObjetivo(Integer id);
 
-    public List<Objetivo> getAllObjetivos() {
-        return null;
-    }
+    public List<Objetivo> getAllObjetivos();
 
-    public Objetivo updateObjetivo(Objetivo objetivo) {
-        return null;
-    }
+    public Objetivo updateObjetivo(Objetivo objetivo);
 
-    public void deleteObjetivo(Long id) {
-
-    }
+    public void deleteObjetivo(Integer id);
 }

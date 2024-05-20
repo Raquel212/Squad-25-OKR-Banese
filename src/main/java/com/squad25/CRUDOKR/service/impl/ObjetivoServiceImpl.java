@@ -8,21 +8,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class ObjetivoServiceImpl extends ObjetivoService   {
+public class ObjetivoServiceImpl implements ObjetivoService   {
 
     @Autowired
     private ObjetivoRepository objetivoRepository;
 
     @Override
     public Objetivo createObjetivo(Objetivo objetivo) {
+        Optional<Objetivo> obj = objetivoRepository.findByDescricao(objetivo.getId());
+        if (obj.isPresent())
+            return null;
         return objetivoRepository.save(objetivo);
     }
 
     @Override
-    public Objetivo getObjetivo(Long id) {
-        return objetivoRepository.findById(id).orElseThrow();
+    public Objetivo getObjetivo(Integer id) {
+        return objetivoRepository.findById(id).orElseThrow(() -> new RuntimeException("Objetivo não encontrado"));
     }
 
     @Override
@@ -32,11 +36,17 @@ public class ObjetivoServiceImpl extends ObjetivoService   {
 
     @Override
     public Objetivo updateObjetivo(Objetivo objetivo) {
+        Optional<Objetivo> obj = objetivoRepository.findByDescricao(objetivo.getId());
+        if (obj.isPresent() && !obj.get().getId().equals(objetivo.getId())) {
+            return null;
+        }
         return objetivoRepository.save(objetivo);
     }
 
+
+
     @Override
-    public void deleteObjetivo(Long id) {
+    public void deleteObjetivo(Integer id) {
         objetivoRepository.deleteById(id);
     }
 }
