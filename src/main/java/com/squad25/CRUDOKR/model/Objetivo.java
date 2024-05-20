@@ -10,8 +10,8 @@ import java.util.Date;
 @Entity
 @Table(name = "Objetivo")
 public class Objetivo {
+	
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "tipo")
@@ -26,7 +26,7 @@ public class Objetivo {
     private Date dataPrevisao;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "dataCnclusao")
+    @Column(name = "dataConclusao")
     private LocalDate dataConclusao;
 
     @Column(name = "descricao", length = 300)
