@@ -3,6 +3,7 @@ package com.squad25.CRUDOKR;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class Squad25OkrBanese1Application {
 
