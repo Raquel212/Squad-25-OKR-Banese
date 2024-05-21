@@ -1,5 +1,6 @@
 HELP.md
 target/
+bin/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -32,3 +33,4 @@ build/
 ### VS Code ###
 .vscode/
 .idea/*
+src/main/java/com/squad25/CRUDOKR/service/ObjetivoService.java
