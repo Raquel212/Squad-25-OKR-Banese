@@ -1,60 +1,81 @@
 package com.squad25.CRUDOKR.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Column;
-import javax.persistence.Table;
-import java.time.LocalDateTime;
+import java.sql.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
-@Table(name = "medicao")  
 public class Medicao {
+	
+	@Id
+	@Column(name = "id")
+	private Long id;
+	
+	@Column(name = "idKeyResult")
+	private Long idKeyResult;
+	
+	@Column(name = "idMeta")
+	private Long idMeta;
+	
+	@Column(name = "dataCadastro")
+	private Date dataCadastro;
+	
+	@Column(name = "dataMedicao")
+	private Date dataMedicao;
+	
+	@Column(name = "descricao")
+	private String descricao;
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public Long getIdKeyResult() {
+		return idKeyResult;
+	}
+	
+	public void setIdKeyResult(Long idKeyResult) {
+		this.idKeyResult = idKeyResult;
+	}
+	
+	public Long getIdMeta() {
+		return idMeta;
+	}
+	
+	public void setIdMeta(Long idMeta) {
+		this.idMeta = idMeta;
+	}
+	
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+	
+	public Date getDataMedicao() {
+		return dataMedicao;
+	}
+	public void setDataMedicao(Date dataMedicao) {
+		this.dataMedicao = dataMedicao;
+	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "tipo")
-    private String tipo;
-
-    @Column(name = "valor")
-    private double valor;
-
-    @Column(name = "data_hora")
-    private LocalDateTime dataHora;
+	
+	
 
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-
-    public LocalDateTime getDataHora() {
-        return dataHora;
-    }
-
-    public void setDataHora(LocalDateTime dataHora) {
-        this.dataHora = dataHora;
-    }
+	
 }

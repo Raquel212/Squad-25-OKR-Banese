@@ -1,31 +1,20 @@
 package com.squad25.CRUDOKR.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import com.squad25.CRUDOKR.model.Medicao;
-import com.squad25.CRUDOKR.repository.MedicaoRepository;
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class MedicaoService {
+import com.squad25.CRUDOKR.model.Medicao;
 
-    @Autowired
-    private MedicaoRepository repository;
+public interface MedicaoService {
 
-    public List<Medicao> findAll() {
-        return repository.findAll();
-    }
+	 List<Medicao> listarMedicoes();
+	    
+	 Medicao criarMedicao(Medicao medicao);
 
-    public Optional<Medicao> findById(Long id) {
-        return repository.findById(id);
-    }
+	 Optional<Medicao> buscarMedicao(Long id);
 
-    public Medicao save(Medicao medicao) {
-        return repository.save(medicao);
-    }
-
-    public void deleteById(Long id) {
-        repository.deleteById(id);
-    }
+	 void deletarMedicao(Long id);
+	    
+	 Medicao atualizarMedicao(Long id, Medicao medicaoAtualizada);
+	
 }
