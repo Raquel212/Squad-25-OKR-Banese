@@ -3,6 +3,8 @@ package com.squad25.CRUDOKR.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+
 import java.time.LocalDate;
 
 @Entity
@@ -33,6 +35,7 @@ public class KeyResult {
     @Column(name = "status")
     private String status;
     
+    @OneToOne
     private Meta meta;
 
     public Long getId() {

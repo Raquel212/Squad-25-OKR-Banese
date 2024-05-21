@@ -65,18 +65,19 @@ public class KeyResultServiceImpl implements KeyResultService {
     public KeyResultProgressDTO calculateProgress(Long keyResultId) {
         KeyResult keyResult = keyResultRepository.findById(keyResultId)
                 .orElseThrow(() -> new NoSuchElementException("KeyResult not found"));
-        List<Medicao> medicoes = medicaoRepository.findByKeyResultId(keyResultId);
+        List<Medicao> medicoes = medicaoRepository.findByIdKeyResult(keyResultId);
 
         double totalMedicoes = medicoes.stream().mapToDouble(medicao -> medicao.getValor()).sum();
         double progress = (totalMedicoes / keyResult.getMeta().getValor()) * 100;
 
         return new KeyResultProgressDTO(keyResultId, progress);
     }
-
+    
+    @Override
     public List<KeyResultAverageDTO> calculateAverageProgress() {
         List<KeyResult> keyResults = keyResultRepository.findAll();
         return keyResults.stream().map(kr -> {
-            List<Medicao> medicoes = medicaoRepository.findByKeyResultId(kr.getId());
+            List<Medicao> medicoes = medicaoRepository.findByIdKeyResult(kr.getId());
             double totalMedicoes = medicoes.stream().mapToDouble(Medicao::getValor).sum();
             double averageProgress = totalMedicoes / medicoes.size();
 

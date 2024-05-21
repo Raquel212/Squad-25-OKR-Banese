@@ -28,6 +28,7 @@ public class Medicao {
 	@Column(name = "descricao")
 	private String descricao;
 	
+	@Column(nullable = false)
 	private double valor;
 	
 	public Long getId() {

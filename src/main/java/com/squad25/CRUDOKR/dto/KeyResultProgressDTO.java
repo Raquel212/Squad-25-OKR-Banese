@@ -1,8 +1,12 @@
 package com.squad25.CRUDOKR.dto;
 
+import java.time.LocalDate;
+
 public class KeyResultProgressDTO {
     private Long keyResultId;
     private double progress;
+    private Long id;
+    private LocalDate updateDate;
 
     // Construtor padrão
     public KeyResultProgressDTO() {}
@@ -29,4 +33,20 @@ public class KeyResultProgressDTO {
     public void setProgress(double progress) {
         this.progress = progress;
     }
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public LocalDate getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(LocalDate updateDate) {
+		this.updateDate = updateDate;
+	}
 }

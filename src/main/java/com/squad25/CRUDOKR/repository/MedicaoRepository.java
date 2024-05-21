@@ -7,5 +7,5 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MedicaoRepository extends JpaRepository<Medicao, Long> {
-	List<Medicao> findByKeyResultId(Long keyResultId);
+    List<Medicao> findByIdKeyResult(Long idKeyResult);
 }

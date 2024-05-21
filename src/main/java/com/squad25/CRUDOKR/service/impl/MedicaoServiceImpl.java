@@ -43,6 +43,7 @@ public class MedicaoServiceImpl implements MedicaoService {
     		medicaoExistente.setId(medicaoAtualizada.getId());
     		medicaoExistente.setIdMeta(medicaoAtualizada.getIdMeta());
     		medicaoExistente.setDataMedicao(medicaoAtualizada.getDataMedicao());
+    		medicaoExistente.setValor(medicaoAtualizada.getValor());
     		return medicaoRepository.save(medicaoExistente);
     	})
     	.orElse(null);
