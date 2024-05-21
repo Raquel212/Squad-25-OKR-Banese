@@ -33,3 +33,4 @@ build/
 ### VS Code ###
 .vscode/
 .idea/*
+src/main/java/com/squad25/CRUDOKR/service/ObjetivoService.java
