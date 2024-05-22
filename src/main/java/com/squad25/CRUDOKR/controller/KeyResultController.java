@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import com.squad25.CRUDOKR.model.KeyResult;
 import com.squad25.CRUDOKR.service.impl.KeyResultServiceImpl;
 
+import com.squad25.CRUDOKR.dto.KeyResultProgressDTO;
+import com.squad25.CRUDOKR.dto.KeyResultAverageDTO;
+
+
 import java.util.List;
 import java.util.Optional;
 
@@ -54,6 +58,18 @@ public class KeyResultController {
     public ResponseEntity<Void> deletarKeyResult(@PathVariable Long id) {
         keyResultService.deletarKeyResult(id);
         return ResponseEntity.noContent().build();
+    }
+    
+    @GetMapping("/{id}/progress")
+    public ResponseEntity<KeyResultProgressDTO> getProgress(@PathVariable Long id) {
+        KeyResultProgressDTO progress = keyResultService.calculateProgress(id);
+        return ResponseEntity.ok(progress);
+    }
+
+    @GetMapping("/progress/average")
+    public ResponseEntity<List<KeyResultAverageDTO>> getAverageProgress() {
+        List<KeyResultAverageDTO> averages = keyResultService.calculateAverageProgress();
+        return ResponseEntity.ok(averages);
     }
 
 }

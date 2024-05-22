@@ -33,6 +33,9 @@ public class Meta {
     @Column(name = "descricao")
     private String descricao;
     
+    @Column(nullable = false)
+    private double valor;
+    
 	public Long getIdKeyResult() {
 		return idKeyResult;
 	}
@@ -68,5 +71,11 @@ public class Meta {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public double getValor() {
+		return valor;
+	}
+	public void setValor(double valor) {
+		this.valor = valor;
 	}
 }

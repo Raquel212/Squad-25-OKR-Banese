@@ -3,11 +3,12 @@ package com.squad25.CRUDOKR.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+
+import java.time.LocalDate;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
-import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 public class KeyResult {
@@ -27,10 +28,9 @@ public class KeyResult {
 
     @Column(name = "idObjetivo")
     private Long idObjetivo;
-    
-    @Temporal(TemporalType.DATE)
+   
     @Column(name = "dataCadastro")
-    private Date dataCadastro;
+    private LocalDate dataCadastro;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "dataConclusao")
@@ -38,6 +38,9 @@ public class KeyResult {
 
     @Column(name = "status")
     private String status;
+    
+    @OneToOne
+    private Meta meta;
 
     public Long getId() {
         return id;
@@ -79,11 +82,11 @@ public class KeyResult {
         this.idObjetivo = idObjetivo;
     }
 
-    public Date getDataCadastro() {
+    public LocalDate getDataCadastro() {
         return dataCadastro;
     }
 
-    public void setDataCadastro(Date dataCadastro) {
+    public void setDataCadastro(LocalDate dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
 
@@ -102,4 +105,13 @@ public class KeyResult {
     public void setStatus(String status) {
         this.status = status;
     }
+    
+	public Meta getMeta() {
+		return meta;
+	}
+
+	public void setMeta(Meta meta) {
+		this.meta = meta;
+	}
+
 }
