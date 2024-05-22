@@ -6,7 +6,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -27,7 +26,7 @@ public class Meta {
     private String status;
     
     @Column(name = "dataConclusao")
-    private LocalDate dataConclusao;
+    private Date dataConclusao;
     
     @Temporal(TemporalType.DATE)
     @Column(name = "descricao")
@@ -54,10 +53,10 @@ public class Meta {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public LocalDate getDataConclusao() {
+	public Date getDataConclusao() {
 		return dataConclusao;
 	}
-	public void setDataConclusao(LocalDate dataConclusao) {
+	public void setDataConclusao(Date dataConclusao) {
 		this.dataConclusao = dataConclusao;
 	}
 	public String getDescricao() {

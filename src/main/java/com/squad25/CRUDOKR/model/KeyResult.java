@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
@@ -30,11 +30,11 @@ public class KeyResult {
     private Long idObjetivo;
    
     @Column(name = "dataCadastro")
-    private LocalDate dataCadastro;
+    private Date dataCadastro;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "dataConclusao")
-    private LocalDate dataConclusao;
+    private Date dataConclusao;
 
     @Column(name = "status")
     private String status;
@@ -82,19 +82,19 @@ public class KeyResult {
         this.idObjetivo = idObjetivo;
     }
 
-    public LocalDate getDataCadastro() {
+    public Date getDataCadastro() {
         return dataCadastro;
     }
 
-    public void setDataCadastro(LocalDate dataCadastro) {
+    public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
 
-    public LocalDate getDataConclusao() {
+    public Date getDataConclusao() {
         return dataConclusao;
     }
 
-    public void setDataConclusao(LocalDate dataConclusao) {
+    public void setDataConclusao(Date dataConclusao) {
         this.dataConclusao = dataConclusao;
     }
 

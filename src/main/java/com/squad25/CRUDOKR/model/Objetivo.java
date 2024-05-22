@@ -4,7 +4,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.*;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,6 +11,7 @@ import java.util.Date;
 public class Objetivo {
 	
     @Id
+    @GeneratedValue
     private Integer id;
 
     @Column(name = "tipo")
@@ -27,7 +27,7 @@ public class Objetivo {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "dataConclusao")
-    private LocalDate dataConclusao;
+    private Date dataConclusao;
 
     @Column(name = "descricao", length = 300)
     private String descricao;
@@ -67,11 +67,11 @@ public class Objetivo {
         this.dataPrevisao = dataPrevisao;
     }
 
-    public LocalDate getDataConclusao() {
+    public Date getDataConclusao() {
         return dataConclusao;
     }
 
-    public void setDataConclusao(LocalDate dataConclusao) {
+    public void setDataConclusao(Date dataConclusao) {
         this.dataConclusao = dataConclusao;
     }
 
