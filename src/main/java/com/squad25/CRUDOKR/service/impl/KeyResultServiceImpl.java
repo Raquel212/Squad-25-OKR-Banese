@@ -29,17 +29,17 @@ public class KeyResultServiceImpl implements KeyResultService {
     public List<KeyResult> listarKeyResults() {
         return keyResultRepository.findAll();
     }
-    
+  
     @Override
     public KeyResult criarKeyResult(KeyResult keyResult) {
+    	  keyResult.setId(keyResult.getId());
     	  return keyResultRepository.save(keyResult);
     	}
-
-    @Override
+    
     public Optional<KeyResult> buscarKeyResult(Long id) {
     	return keyResultRepository.findById(id);
     }
-    
+   
     @Override
     public void deletarKeyResult(Long id) {
         keyResultRepository.deleteById(id);

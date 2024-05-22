@@ -6,6 +6,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
 import java.time.LocalDate;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+
 
 @Entity
 public class KeyResult {
@@ -25,10 +28,11 @@ public class KeyResult {
 
     @Column(name = "idObjetivo")
     private Long idObjetivo;
-    
+   
     @Column(name = "dataCadastro")
     private LocalDate dataCadastro;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "dataConclusao")
     private LocalDate dataConclusao;
 
@@ -101,7 +105,7 @@ public class KeyResult {
     public void setStatus(String status) {
         this.status = status;
     }
-
+    
 	public Meta getMeta() {
 		return meta;
 	}
@@ -109,4 +113,5 @@ public class KeyResult {
 	public void setMeta(Meta meta) {
 		this.meta = meta;
 	}
+
 }

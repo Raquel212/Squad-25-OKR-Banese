@@ -22,4 +22,5 @@ public interface KeyResultService {
     public KeyResultProgressDTO calculateProgress(Long keyResultId);
     
     public List<KeyResultAverageDTO> calculateAverageProgress();
+
 }

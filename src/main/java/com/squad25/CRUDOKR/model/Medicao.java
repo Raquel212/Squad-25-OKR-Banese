@@ -72,7 +72,7 @@ public class Medicao {
 	public String getDescricao() {
 		return descricao;
 	}
-	
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
@@ -84,9 +84,5 @@ public class Medicao {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-	
-	
-
-
 	
 }
